@@ -1,0 +1,291 @@
+---
+title: "What can I do for you?"
+author: "David Keyes"
+date: "May 16, 2018"
+output:
+  xaringan::moon_reader:
+    css: ["dk-style.css", "default"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+
+knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE,
+                      fig.width = 10)
+
+library(tidyverse)
+library(ggmap)
+library(gganimate)
+library(tweenr)
+```
+
+```{r dk_map_function, include = FALSE}
+
+dk.blue <- "#004c97"
+dk.orange <- "#DD8233"
+
+register_google(key = "AIzaSyBonrLhrEfIT08lG62TA-KOYoaoghonw4Y")
+
+us.map <- map_data("state")
+
+
+dk_map <- function(location) {
+     
+     loc <- geocode(location)
+     
+     ggplot(us.map, aes(x = long, y = lat, group = group)) +
+          geom_polygon(color = "white",
+                       fill = "#D3D3D3") +
+          geom_point(data = loc, 
+                     aes(x = lon, y = lat, group = 1),
+                     shape = 21,
+                     color = "white",
+                     size = 5,
+                     stroke = 2,
+                     fill = dk.orange) +
+          coord_map() +
+          theme_void() 
+     
+}
+
+```
+
+---
+class:inverse, center, middle
+# Who am I?
+
+```{r dk_map_animated_function}
+
+# location <- c("Yellow Springs, Ohio",
+#               "Richmond, Indiana",
+#               "Columbus, Ohio",
+#               "Washington, DC",
+#               "San Diego, California",
+#               "Portland, Oregon")
+# 
+# doing <- c("Grew up",
+#            "Went to college",
+#            "Master's degree in education",
+#            "Second grade teacher",
+#            "PhD in anthropology",
+#            "Lewis & Clark -> OCF -> Consultant")
+# 
+# dk.history <- tibble(location, doing) %>%
+#      mutate_geocode(location)
+# 
+# dk_map_animated <- function(rn) {
+#      
+#      loc <- dk.history %>%
+#           slice((rn-1):rn) %>%
+#           mutate(time = c("1", "2")) %>%
+#           mutate(group = "1") %>%
+#           mutate(ease = 'cubic-in-out') %>%
+#           tween_elements('time', 'group', 'ease', nframes = 300)
+#      
+#      
+#      
+#      p <- ggplot(us.map, aes(x = long, y = lat, group = group)) +
+#           geom_polygon(color = dk.blue,
+#                        fill = dk.blue) +
+#           geom_point(data = loc, 
+#                      aes(x = lon, y = lat, group = 1, frame = location),
+#                      shape = 21,
+#                      color = "white",
+#                      size = 5,
+#                      stroke = 2,
+#                      fill = dk.orange) +
+#           coord_map() +
+#           theme_void() +
+#           theme(title = element_blank()) 
+#      
+#      gganimate(p, interval = 1)
+# }
+
+
+
+```
+
+
+---
+class: middle, center
+## Bachelor's Degree
+Earlham College (Richmond, Indiana)
+
+
+```{r include = TRUE, echo = FALSE}
+dk_map("Earlham College")
+```
+
+
+
+---
+class: middle, center
+## Preschool Teacher
+Yellow Springs, Ohio
+
+
+```{r include = TRUE, echo = FALSE}
+dk_map("Yellow Springs, Ohio")
+```
+
+---
+class: middle, center
+## Master's Degree in Education
+Ohio State University
+
+
+```{r include = TRUE, echo = FALSE}
+dk_map("Ohio State University")
+```
+
+---
+class: middle, center
+## Second Grade Teacher
+Silver Spring, Maryland
+
+```{r include = TRUE, echo = FALSE}
+dk_map("Silver Spring, MD")
+```
+
+---
+class: middle, center
+## PhD in Anthropology
+University of California, San Diego
+
+```{r include = TRUE, echo = FALSE}
+dk_map("San Diego, CA")
+```
+
+---
+class: middle, center
+## Sociology/Anthropology Faculty
+Lewis and Clark College
+
+```{r include = TRUE, echo = FALSE}
+dk_map("Portland, Oregon")
+```
+
+
+---
+class: middle, center
+## Research Department
+Oregon Community Foundation
+
+```{r include = TRUE, echo = FALSE}
+dk_map("Portland, Oregon")
+```
+
+
+
+---
+class: middle, center
+## Independent Consultant
+Focus on creative communication of research
+
+```{r include = TRUE, echo = FALSE}
+dk_map("Portland, Oregon")
+```
+
+
+---
+class:inverse, middle, center
+
+# What do I do?
+
+---
+class:center, middle
+## Data Visualization
+
+---
+class: center, middle
+### Oregon by the Numbers
+
+---
+class: center, middle
+
+<img src="images/obtn-douglas.png" height = "600px">
+
+---
+class: center, middle
+### 4C Survey Results 
+
+---
+class: center, middle
+<img src="images/4c-layout-original.png" height = "600px">
+
+---
+class: center, middle
+### Updated Version
+
+---
+
+<img src="images/4c-layout-draft.png" height = "600px">
+
+
+---
+class: center, middle
+
+### Mapping
+
+---
+
+<img src="images/ods-map.svg" height="600px">
+
+---
+class:middle, center
+## Digital Reporting
+
+
+
+---
+class:middle, center
+
+### Interactive Reporting
+
+---
+class:middle, center
+
+<a href="https://dgkeyes.com/report/outdoor-school-in-oregon-digital-report-version-4/"><img src="images/ods-all-schools-map-animated.gif" width="100%"></a>
+
+
+---
+class: center, middle
+
+### DC K-12 Website
+
+---
+class:middle, center
+
+<a href="https://dck12.dgkeyes.com"><img src="images/dck12-website.gif" width="100%"></a>
+
+
+---
+class: center, middle
+### Ongoing Reporting for Continuous Improvement
+
+---
+class:middle, center
+<a href="https://rawgit.com/dgkeyes/trio/master/2018/survey_reports/docs/introduction.html"><img src="images/trio-report-animated.gif" width="100%"></a>
+
+
+---
+class: center, middle
+### Dashboards
+
+---
+class:middle, center
+<a href="https://mnassociatesinc.com/wp-content/uploads/2018/05/FRCC_dashboard.html"><img src="images/frcc-dashboard.gif" width="100%"></a>
+
+
+
+---
+class:center, middle
+## I can think with you
+
+I can often help you think of ways that you can use data that you hadn't even considered.
+

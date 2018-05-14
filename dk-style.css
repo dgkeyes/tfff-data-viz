@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
+body {
+     font-family: 'Roboto', sans-serif;
+}
+
+.inverse {
+     background-color: #004c97;
+}
+
+.inverse h1, .inverse h3 {
+     text-shadow: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+     color: #004c97;
+}
+
+.hide-title h2, .hide-title h3, .hide-title h4 {
+     display: none;
+}
+p {
+     color: #545554;
+}
+
+.remark-slide-number {
+     font-size: 12px;
+}
+
