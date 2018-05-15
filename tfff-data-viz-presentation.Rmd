@@ -1,6 +1,6 @@
 ---
 title: "What can I do for you?"
-author: "David Keyes"
+author: "David Keyes <br> dgkeyes.com"
 date: "May 16, 2018"
 output:
   xaringan::moon_reader:
